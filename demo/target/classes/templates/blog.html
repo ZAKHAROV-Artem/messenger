@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+
+    .form{
+    width:100%;
+    float:bottom;
+    margin-bottom:10px;
+    }
+    .message-block{
+    width: 70%;
+    height:100%;
+    margin:auto
+    }
+    .message{
+    max-width:70%;
+    background-color: #55efc4;
+    border-radius:20px;
+    padding:10px;
+    color:#fff;
+    border-top-left-radius:0px;
+    margin-bottom:10px;
+    }
+    .input{
+    outline:none;
+    border-radius:30px;
+    width:80%;
+    height:60px;
+    padding:5px;
+    font-size:17px;
+    font-family:arial;
+    margin-left:7.5%;
+    font-size:15px;
+    }
+    .input:focus{
+     border:2px solid #2ed573;
+    }
+    .del{
+    padding:4px;
+    float:right
+    }
+    .send{
+    position:absolute;
+    margin-left:5px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:2px solid #2ed573;
+    transition:0.4s;
+    }
+    .send:hover{
+    background-color:#2ed573;
+    transition:0.4s;
+    }
+    </style>
+</head>
+<body>
+<header th:insert="parts/header :: header"></header>
+<div class="message-block">
+    <div th:each="el : ${posts}" th:text="${el.text}" class="message mt-2">
+    <!--    <form th:action="'/blog/' + ${el.id} + '/remove/'" method="post">-->
+    <!--        <button type="submit" class="del btn btn-danger"><small>Удалить</small></button>-->
+    <!--    </form>-->
+    </div>
+</div>
+<form action="/blog" method="post">
+    <div class="form">
+        <input name="text" placeholder="Введите текст" class="input"/>
+        <button type="submit" class="send"><img src="plane.png"></button>
+    </div>
+</form>
+
+</body>
+</html>
